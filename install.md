@@ -34,15 +34,14 @@ After the repo is installed, register this repo's `SKILL.md` with the agent you 
 
 - **OpenCode**: add this repo's `SKILL.md` as a global skill under `$OPN_HOME/skill/browser-harness/SKILL.md` (typically `~/.opencode/skill/browser-harness/SKILL.md`). A symlink is fine; on Windows without admin, copy the file instead.
 
+- **OpenCode**: add this repo's `SKILL.md` as a global skill under `~/.config/opencode/skills/browser-harness/SKILL.md`. A symlink is fine; on Windows without admin, copy the file instead.
+
   ```bash
   # Unix (symlink preferred)
-  mkdir -p "${OPN_HOME:-$HOME/.opencode}/skill/browser-harness" && ln -sf "$PWD/SKILL.md" "${OPN_HOME:-$HOME/.opencode}/skill/browser-harness/SKILL.md"
-  ```
+  mkdir -p "${XDG_CONFIG_HOME:-$HOME/.config}/opencode/skills/browser-harness" && ln -sf "$PWD/SKILL.md" "${XDG_CONFIG_HOME:-$HOME/.config}/opencode/skills/browser-harness/SKILL.md"
 
-  ```powershell
   # Windows (PowerShell, symlink needs admin — fall back to copy)
-  $opn="$env:USERPROFILE\.opencode\skill\browser-harness"; New-Item -ItemType Directory -Force -Path $opn | Out-Null; try { New-Item -ItemType SymbolicLink -Path "$opn\SKILL.md" -Target "$PWD\SKILL.md" -Force } catch { Copy-Item "$PWD\SKILL.md" "$opn\SKILL.md" -Force }
-  ```
+  $opn="$env:USERPROFILE\.config\opencode\skills\browser-harness"; New-Item -ItemType Directory -Force -Path $opn | Out-Null; try { New-Item -ItemType SymbolicLink -Path "$opn\SKILL.md" -Target "$PWD\SKILL.md" -Force } catch { Copy-Item "$PWD\SKILL.md" "$opn\SKILL.md" -Force }
 
 This makes new Codex, Claude Code, or OpenCode sessions in other folders load the runtime browser harness instructions automatically.
 
