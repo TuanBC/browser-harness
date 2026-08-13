@@ -37,7 +37,9 @@ After the repo is installed, register this repo's `SKILL.md` with the agent you 
   ```bash
   # Unix (symlink preferred)
   mkdir -p "${OPN_HOME:-$HOME/.opencode}/skill/browser-harness" && ln -sf "$PWD/SKILL.md" "${OPN_HOME:-$HOME/.opencode}/skill/browser-harness/SKILL.md"
+  ```
 
+  ```powershell
   # Windows (PowerShell, symlink needs admin — fall back to copy)
   $opn="$env:USERPROFILE\.opencode\skill\browser-harness"; New-Item -ItemType Directory -Force -Path $opn | Out-Null; try { New-Item -ItemType SymbolicLink -Path "$opn\SKILL.md" -Target "$PWD\SKILL.md" -Force } catch { Copy-Item "$PWD\SKILL.md" "$opn\SKILL.md" -Force }
   ```
